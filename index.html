@@ -595,6 +595,7 @@
       display:flex; justify-content:center;
       flex-wrap:wrap; gap:1.5rem;
       margin-bottom:2.8rem;
+      display: none;
     }
 
     .reg-card {
@@ -1106,6 +1107,8 @@
       </div>
 
       <a href="#rsvp" class="btn btn-navy reveal">RSVP First &rarr;</a>
+
+      <button id="showBankDetails" class="btn btn-gold reveal">Show Bank Details</button>
     </div>
   </section>
 
@@ -1205,6 +1208,14 @@
         io.unobserve(entry.target);
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    /* ── BUTTON ───────────────────────────── */
+    const showBankDetails  = document.getElementById('showBankDetails');
+
+    showBankDetails.onclick = function() {
+      document.querySelector('.reg-cards').style.display = 'flex';
+      showBankDetails.style.display = 'none';
+    };
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
