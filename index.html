@@ -1,11 +1,1204 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jhulandy &amp; Jommar — Wedding Celebration, August 28th, 2026, Cebu City, CA" />
+  <title>Jhulandy &amp; Jommar — August 28, 2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================================================
+       VARIABLES
+    ================================================================ */
+    :root {
+      --navy:        #1B2A4A;
+      --navy-deep:   #111927;
+      --navy-light:  #2d4172;
+      --gold:        #C9A96E;
+      --gold-light:  #e4c99a;
+      --cream:       #FFFDF9;
+      --cream-mid:   #f7f3ec;
+      --cream-dark:  #ede8de;
+      --text-dark:   #1e1e1e;
+      --text-mid:    #5a5a5a;
+      --white:       #ffffff;
+
+      --shadow-sm:   0 2px 12px rgba(27,42,74,.07);
+      --shadow-md:   0 6px 28px rgba(27,42,74,.11);
+      --shadow-lg:   0 16px 50px rgba(27,42,74,.16);
+      --ease:        all .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ================================================================
+       RESET & BASE
+    ================================================================ */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; font-size:16px; }
+
+    body {
+      font-family:'Montserrat', sans-serif;
+      color: var(--text-dark);
+      background: var(--cream);
+      line-height:1.75;
+      overflow-x:hidden;
+    }
+
+    img { display:block; max-width:100%; }
+
+    a { color:inherit; }
+
+    /* ================================================================
+       NAVIGATION
+    ================================================================ */
+    #navbar {
+      position:fixed; top:0; left:0; right:0; z-index:900;
+      padding:1.4rem 2.5rem;
+      transition: var(--ease);
+    }
+
+    #navbar.scrolled {
+      background: rgba(27,42,74,.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding:.9rem 2.5rem;
+      box-shadow:0 2px 24px rgba(0,0,0,.22);
+    }
+
+    .nav-inner {
+      max-width:1200px; margin:0 auto;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+
+    .nav-brand {
+      font-family:'Montserrat', cursive;
+      font-size:2.1rem; color:var(--white);
+      text-decoration:none; letter-spacing:1px;
+      transition:color .3s;
+    }
+    .nav-brand:hover { color:var(--gold-light); }
+
+    .nav-links {
+      list-style:none;
+      display:flex; gap:2.2rem;
+    }
+    .nav-links a {
+      color:rgba(255,255,255,.8);
+      text-decoration:none;
+      font-size:.68rem; font-weight:600;
+      letter-spacing:2.5px; text-transform:uppercase;
+      transition:color .3s;
+      position:relative; padding-bottom:2px;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:0; left:0;
+      width:0; height:1px; background:var(--gold);
+      transition:width .3s;
+    }
+    .nav-links a:hover { color:var(--gold); }
+    .nav-links a:hover::after { width:100%; }
+
+    .nav-toggle {
+      display:none; background:none; border:none;
+      cursor:pointer; padding:4px;
+      flex-direction:column; gap:5px; z-index:10;
+    }
+    .nav-toggle span {
+      display:block; width:24px; height:1.5px;
+      background:var(--white); transition: var(--ease);
+    }
+    .nav-toggle.open span:nth-child(1){ transform:rotate(45deg) translate(4.5px,4.5px); }
+    .nav-toggle.open span:nth-child(2){ opacity:0; transform:translateX(6px); }
+    .nav-toggle.open span:nth-child(3){ transform:rotate(-45deg) translate(4.5px,-4.5px); }
+
+    /* ================================================================
+       SHARED SECTION STYLES
+    ================================================================ */
+    section { padding:7rem 2rem; }
+
+    .container { max-width:1100px; margin:0 auto; }
+    .container-sm { max-width:760px; margin:0 auto; }
+
+    .eyebrow {
+      display:block;
+      font-size:.65rem; font-weight:600;
+      letter-spacing:4px; text-transform:uppercase;
+      color:var(--gold); margin-bottom:.6rem;
+    }
+
+    .section-heading {
+      font-family:'Montserrat', cursive;
+      font-size:clamp(2.6rem,5.5vw,4.2rem);
+      color:var(--navy); line-height:1.1;
+    }
+
+    .section-heading.on-dark { color:var(--white); }
+
+    .ornament {
+      display:flex; align-items:center; justify-content:center;
+      gap:1rem; margin:1.4rem 0 2.4rem;
+    }
+    .ornament::before,.ornament::after {
+      content:''; flex:1; max-width:70px;
+      height:1px; background:var(--gold); opacity:.7;
+    }
+    .ornament-diamond {
+      width:7px; height:7px;
+      background:var(--gold); transform:rotate(45deg);
+    }
+
+    /* ================================================================
+       SCROLL-REVEAL
+    ================================================================ */
+    .reveal {
+      opacity:0; transform:translateY(28px);
+      transition:opacity .75s ease, transform .75s ease;
+    }
+    .reveal.in-view {
+      opacity:1; transform:none;
+    }
+
+    /* ================================================================
+       BUTTONS
+    ================================================================ */
+    .btn {
+      display:inline-block;
+      padding:.95rem 2.8rem;
+      font-family:'Montserrat', sans-serif;
+      font-size:.68rem; font-weight:600;
+      letter-spacing:3px; text-transform:uppercase;
+      text-decoration:none; border:1.5px solid;
+      cursor:pointer; transition: var(--ease);
+      line-height:1;
+    }
+    .btn:hover { transform:translateY(-3px); }
+
+    .btn-ghost-white {
+      color:var(--white); border-color:rgba(255,255,255,.65);
+      background:transparent;
+    }
+    .btn-ghost-white:hover {
+      background:var(--white); color:var(--navy);
+      border-color:var(--white);
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+
+    .btn-navy {
+      color:var(--white); background:var(--navy); border-color:var(--navy);
+    }
+    .btn-navy:hover {
+      background:var(--navy-light); border-color:var(--navy-light);
+      box-shadow:var(--shadow-md);
+    }
+
+    .btn-gold {
+      color:var(--white); background:var(--gold); border-color:var(--gold);
+    }
+    .btn-gold:hover {
+      background:transparent; color:var(--gold);
+      box-shadow:var(--shadow-md);
+    }
+
+    /* ================================================================
+       1 · HERO
+    ================================================================ */
+    #hero {
+      min-height:100svh;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center;
+      padding:0;
+      position:relative; overflow:hidden;
+      background:
+        linear-gradient(to bottom,
+          rgba(20,33,62,.52) 0%,
+          rgba(20,33,62,.42) 55%,
+          rgba(20,33,62,.72) 100%),
+        url('https://images.unsplash.com/photo-1483401757487-2ced3fa77952?w=1920&q=85')
+        center / cover no-repeat;
+    }
+
+    .hero-wrap {
+      position:relative; z-index:2;
+      padding:2rem 1.5rem;
+      animation:heroFadeUp 1.4s cubic-bezier(.4,0,.2,1) both;
+    }
+
+    .hero-pre {
+      font-size:.65rem; font-weight:600;
+      letter-spacing:5px; text-transform:uppercase;
+      color:var(--gold-light); margin-bottom:1.8rem;
+    }
+
+    .hero-names {
+      font-family:'Montserrat', cursive;
+      font-size:clamp(4.5rem,14vw,8rem);
+      color:var(--white);
+      line-height:1.05;
+      text-shadow:0 4px 32px rgba(0,0,0,.25);
+    }
+
+    .hero-amp {
+      display:block;
+      font-size:clamp(2rem,6vw,4rem);
+      color:var(--gold-light);
+      margin:-.3em 0;
+    }
+
+    .hero-date {
+      font-family:'Crimson Text', serif;
+      font-size:clamp(1rem,2.8vw,1.45rem);
+      font-weight:300;
+      letter-spacing:7px; text-transform:uppercase;
+      color:rgba(255,255,255,.9);
+      margin:2rem 0 .6rem;
+    }
+
+    .hero-loc {
+      font-size:.68rem; letter-spacing:3px; text-transform:uppercase;
+      color:var(--gold-light); margin-bottom:3rem;
+    }
+
+    .scroll-cue {
+      position:absolute; bottom:2.5rem; left:50%;
+      transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:.6rem;
+      color:rgba(255,255,255,.5);
+      font-size:.6rem; letter-spacing:2.5px; text-transform:uppercase;
+      animation:bobDown 2.2s ease-in-out infinite;
+    }
+    .scroll-cue::after {
+      content:'';
+      width:18px; height:18px;
+      border-right:1px solid rgba(255,255,255,.5);
+      border-bottom:1px solid rgba(255,255,255,.5);
+      transform:rotate(45deg);
+    }
+
+    /* ================================================================
+       2 · OUR STORY
+    ================================================================ */
+    #story {
+      background:var(--cream);
+      text-align:center;
+    }
+
+    .story-body {
+      font-family:'Crimson Text', serif;
+      font-size:1.22rem; font-weight:300;
+      color:var(--text-mid); line-height:2;
+      margin-bottom:1.4rem;
+    }
+    .story-body em { color:var(--navy); font-style:italic; }
+
+    .story-portraits {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin:3.5rem 0 0;
+    }
+
+    .portrait {
+      overflow:hidden; border-radius:1px;
+      box-shadow:var(--shadow-md);
+      aspect-ratio:3/4;
+      transition: var(--ease);
+    }
+    .portrait:nth-child(2) { margin-top:2.5rem; }
+    .portrait:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); }
+
+    .portrait img {
+      width:100%; height:100%;
+      object-fit:cover;
+      transition:transform .55s ease;
+    }
+    .portrait:hover img { transform:scale(1.05); }
+
+    /* ================================================================
+       3 · EVENT DETAILS
+    ================================================================ */
+    #details {
+      background:var(--navy);
+      text-align:center;
+    }
+    #details .eyebrow { color:var(--gold-light); }
+
+    .details-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.25rem;
+      margin-top:3rem;
+    }
+
+    .d-card {
+      padding:2.8rem 1.8rem;
+      border:1px solid rgba(201,169,110,.22);
+      background:rgba(255,255,255,.04);
+      transition: var(--ease);
+      text-align:center;
+    }
+    .d-card:hover {
+      background:rgba(255,255,255,.09);
+      border-color:rgba(201,169,110,.5);
+      transform:translateY(-5px);
+    }
+
+    .d-card .d-icon {
+      font-size:1.7rem; display:block; margin-bottom:1.1rem; color:var(--gold);
+    }
+
+    .d-card h3 {
+      font-size:.6rem; letter-spacing:4px;
+      text-transform:uppercase; color:var(--gold);
+      margin-bottom:.9rem;
+    }
+
+    .d-card .d-big {
+      display:block;
+      font-family:'Crimson Text', serif;
+      font-size:1.7rem; font-weight:400;
+      color:var(--white); margin-bottom:.3rem;
+    }
+
+    .d-card p {
+      font-family:'Crimson Text', serif;
+      font-size:1.05rem; font-weight:300;
+      color:rgba(255,255,255,.75); line-height:1.7;
+    }
+
+    /* ================================================================
+       4 · COUNTDOWN
+    ================================================================ */
+    #countdown {
+      /*background:var(--cream-mid);*/
+      background-color: #f2f4f6;
+      text-align:center;
+    }
+
+    .cd-wrap {
+      display:flex; justify-content:center;
+      align-items:flex-start; gap:1rem;
+      flex-wrap:wrap;
+      margin-top:3.2rem;
+    }
+
+    .cd-block { text-align:center; min-width:90px; }
+
+    .cd-num {
+      display:block;
+      font-family:'Crimson Text', serif;
+      font-size:clamp(3rem,9vw,5.8rem);
+      font-weight:300; color:var(--navy);
+      line-height:1; margin-bottom:.45rem;
+    }
+
+    .cd-label {
+      font-size:.6rem; letter-spacing:3.5px;
+      text-transform:uppercase; color:var(--gold); font-weight:600;
+    }
+
+    .cd-colon {
+      font-family:'Crimson Text', serif;
+      font-size:clamp(2.5rem,6vw,4.5rem);
+      color:var(--gold); line-height:1;
+      padding-top:.3rem; user-select:none;
+    }
+
+    /* ================================================================
+       5 · GALLERY
+    ================================================================ */
+    #gallery {
+      background:var(--cream);
+      text-align:center;
+    }
+
+    /* ================================================================
+       6 · RSVP
+    ================================================================ */
+    #rsvp {
+      background:var(--navy);
+      text-align:center;
+    }
+    #rsvp .eyebrow { color:var(--gold-light); }
+
+    .rsvp-note {
+      font-family:'Crimson Text', serif;
+      font-size:1.15rem; font-weight:300;
+      color:rgba(255,255,255,.65);
+      max-width:460px; margin:0 auto 3.2rem;
+      line-height:1.8;
+    }
+
+    .rsvp-form { max-width:640px; margin:0 auto; }
+
+    .f-row {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:1rem; margin-bottom:1rem;
+    }
+
+    .f-group { text-align:left; margin-bottom:1rem; }
+
+    .f-group label {
+      display:block;
+      font-size:.6rem; letter-spacing:2.5px;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.55);
+      margin-bottom:.55rem;
+    }
+
+    .f-group input,
+    .f-group select,
+    .f-group textarea {
+      width:100%;
+      padding:.95rem 1.25rem;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      color:var(--white);
+      font-family:'Montserrat', sans-serif;
+      font-size:.88rem;
+      outline:none;
+      transition: var(--ease);
+      appearance:none;
+      border-radius:0;
+    }
+    .f-group input::placeholder,
+    .f-group textarea::placeholder { color:rgba(255,255,255,.28); }
+    .f-group input:focus,
+    .f-group select:focus,
+    .f-group textarea:focus {
+      border-color:var(--gold);
+      background:rgba(255,255,255,.1);
+    }
+    .f-group select option { background:var(--navy); }
+    .f-group textarea { resize:vertical; min-height:100px; }
+
+    .radio-row { display:flex; gap:2rem; flex-wrap:wrap; }
+
+    .radio-opt {
+      display:flex; align-items:center; gap:.55rem;
+      cursor:pointer;
+      color:rgba(255,255,255,.78);
+      font-size:.86rem;
+    }
+    .radio-opt input[type="radio"] { accent-color:var(--gold); cursor:pointer; }
+
+    .f-submit { margin-top:2rem; }
+
+    .btn-submit {
+      padding:1.1rem 4.5rem;
+      background:var(--gold); color:var(--white);
+      border:1.5px solid var(--gold);
+      font-family:'Montserrat', sans-serif;
+      font-size:.68rem; font-weight:600;
+      letter-spacing:3px; text-transform:uppercase;
+      cursor:pointer; transition: var(--ease);
+    }
+    .btn-submit:hover {
+      background:transparent; color:var(--gold);
+      transform:translateY(-3px);
+    }
+    .btn-submit:disabled { opacity:.6; cursor:default; transform:none; }
+
+    /* success toast */
+    .toast {
+      display:none;
+      margin-top:1.2rem;
+      font-family:'Crimson Text', serif;
+      font-size:1.15rem; font-style:italic;
+      color:var(--gold-light); letter-spacing:1px;
+    }
+
+    /* ================================================================
+       7 · ITINERARY
+    ================================================================ */
+    #itinerary {
+      background:var(--cream);
+      text-align:center;
+    }
+
+    .timeline {
+      position:relative;
+      max-width:680px; margin:3.2rem auto 0;
+    }
+
+    .timeline::before {
+      content:'';
+      position:absolute; left:50%; top:0; bottom:0;
+      width:1px; background:rgba(201,169,110,.45);
+      transform:translateX(-50%);
+    }
+
+    .tl-item {
+      display:flex; align-items:flex-start;
+      gap:2rem; margin-bottom:2.5rem;
+      position:relative;
+    }
+    .tl-item:nth-child(odd)  { flex-direction:row;         text-align:right;  }
+    .tl-item:nth-child(even) { flex-direction:row;         text-align:left;   }
+
+    .tl-card {
+      flex:1;
+      padding:1.5rem 1.7rem;
+      background:var(--white);
+      box-shadow:var(--shadow-sm);
+      transition: var(--ease);
+    }
+    .tl-card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); }
+
+    .tl-time {
+      font-size:.6rem; letter-spacing:2.5px;
+      text-transform:uppercase; color:var(--gold);
+      font-weight:600; margin-bottom:.3rem;
+    }
+
+    .tl-title {
+      font-family:'Crimson Text', serif;
+      font-size:1.3rem; font-weight:600;
+      color:var(--navy); margin-bottom:.25rem;
+    }
+
+    .tl-desc {
+      font-size:.83rem; color:var(--text-mid); font-weight:300;
+    }
+
+    .tl-dot {
+      position:absolute; left:50%; top:1.6rem;
+      width:11px; height:11px;
+      background:var(--gold); border-radius:50%;
+      transform:translateX(-50%);
+      border:2px solid var(--cream);
+      box-shadow:0 0 0 3px rgba(201,169,110,.3);
+    }
+
+    .tl-spacer { flex:1; }
+
+    /* ================================================================
+       8 · GIFT REGISTRY
+    ================================================================ */
+    #registry {
+      background:var(--cream-dark);
+      text-align:center;
+    }
+
+    .reg-text {
+      font-family:'Crimson Text', serif;
+      font-size:1.15rem; font-weight:300;
+      color:var(--text-mid); line-height:2;
+      margin-bottom:2.8rem;
+    }
+
+    .reg-cards {
+      display:flex; justify-content:center;
+      flex-wrap:wrap; gap:1.5rem;
+      margin-bottom:2.8rem;
+    }
+
+    .reg-card {
+      display:flex; flex-direction:column;
+      align-items:center; gap:.8rem;
+      width:400px; padding:1rem;
+      background:var(--white);
+      box-shadow:var(--shadow-sm);
+      text-decoration:none; color:var(--navy);
+      transition: var(--ease);
+      border-bottom:2px solid transparent;
+    }
+    .reg-card:hover {
+      transform:translateY(-5px);
+      box-shadow:var(--shadow-lg);
+      border-bottom-color:var(--gold);
+      color:var(--gold);
+    }
+
+    .reg-card-bank { padding:2.2rem 1.5rem; }
+    .reg-card-detail {
+      font-size:.65rem; line-height:1.5;
+      color:var(--text-mid); margin-top:-.2rem;
+    }
+    .reg-qr-placeholder {
+      width:100px; height:100px;
+      background:var(--cream-dark);
+      display:flex; align-items:center; justify-content:center;
+      border-radius:6px; margin-top:.2rem;
+    }
+    .reg-card-logo {
+      background-size:contain; background-repeat:no-repeat;
+      background-position:center;
+    }
+    .reg-qr {
+      display:flex; flex-direction:column;
+      align-items:center; gap:.5rem; width:100%;
+    }
+    .reg-qr-label {
+      font-size:.55rem; letter-spacing:2px;
+      text-transform:uppercase; color:var(--text-mid);
+    }
+    .reg-qr-placeholder {
+      width:100px; height:100px;
+      background:var(--cream-dark);
+      border-radius:6px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .reg-qr-icon { font-size:2rem; opacity:.35; }
+    .reg-card-icon { font-size:2rem; }
+    .reg-card-name {
+      font-size:.62rem; letter-spacing:2px;
+      text-transform:uppercase; font-weight:600;
+    }
+
+    /* ================================================================
+       9 · FOOTER
+    ================================================================ */
+    footer {
+      background:var(--navy-deep);
+      color:rgba(255,255,255,.55);
+      text-align:center;
+      padding:5rem 2rem 2.5rem;
+    }
+
+    .footer-brand {
+      font-family:'Montserrat', cursive;
+      font-size:3.2rem; color:var(--white);
+      margin-bottom:.3rem; display:block;
+    }
+
+    .footer-sub {
+      font-family:'Crimson Text', serif;
+      font-size:.85rem; letter-spacing:4px;
+      text-transform:uppercase;
+      color:var(--gold); margin-bottom:2.5rem;
+    }
+
+    .footer-contact { font-size:.85rem; margin:.35rem 0; }
+    .footer-contact a {
+      color:rgba(255,255,255,.65); text-decoration:none;
+      transition:color .3s;
+    }
+    .footer-contact a:hover { color:var(--gold); }
+
+    .footer-socials {
+      display:flex; justify-content:center;
+      gap:1.2rem; margin:2.2rem 0;
+    }
+
+    .soc {
+      width:40px; height:40px; border-radius:50%;
+      border:1px solid rgba(255,255,255,.18);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.55); text-decoration:none;
+      font-size:.85rem;
+      transition: var(--ease);
+    }
+    .soc:hover {
+      border-color:var(--gold);
+      color:var(--gold);
+      transform:translateY(-3px);
+    }
+
+    .footer-hashtag {
+      font-family:'Crimson Text', serif;
+      font-size:1.1rem; font-style:italic;
+      color:var(--gold); margin-bottom:2.5rem;
+    }
+
+    .footer-rule {
+      width:50px; height:1px;
+      background:rgba(255,255,255,.1);
+      margin:0 auto 1.6rem;
+    }
+
+    .footer-copy {
+      font-size:.65rem; letter-spacing:1.5px;
+      color:rgba(255,255,255,.25);
+    }
+
+    .d-none {
+      display: none !important;
+    }
+
+    /* ================================================================
+       KEYFRAMES
+    ================================================================ */
+    @keyframes heroFadeUp {
+      from { opacity:0; transform:translateY(36px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    @keyframes bobDown {
+      0%,100% { transform:translateX(-50%) translateY(0); }
+      50%      { transform:translateX(-50%) translateY(9px); }
+    }
+
+    /* ================================================================
+       RESPONSIVE
+    ================================================================ */
+    @media (max-width:900px) {
+      .details-grid { grid-template-columns:1fr 1fr; }
+    }
+
+    @media (max-width:768px) {
+      section { padding:5rem 1.4rem; }
+
+      /* mobile nav */
+      .nav-links {
+        display:none;
+        position:fixed; top:0; right:0;
+        width:72vw; max-width:280px; height:100vh;
+        background:var(--navy-deep);
+        flex-direction:column;
+        padding:5.5rem 2.5rem 2rem;
+        gap:2rem; z-index:800;
+        box-shadow:-8px 0 40px rgba(0,0,0,.35);
+      }
+      .nav-links.open { display:flex; }
+      .nav-toggle { display:flex; }
+
+      /* story */
+      .story-portraits { grid-template-columns:1fr; }
+      .portrait:nth-child(2) { margin-top:0; }
+
+      /* details */
+      .details-grid { grid-template-columns:1fr 1fr; }
+
+      /* gallery */
+      .gallery-grid { grid-template-columns:1fr 1fr; }
+      .g-item:nth-child(n) { grid-column:span 1; grid-row:span 1; }
+      .g-item img,
+      .g-item:nth-child(1) img { height:190px; min-height:unset; }
+
+      /* rsvp */
+      .f-row { grid-template-columns:1fr; }
+
+      /* timeline */
+      .timeline::before { left:1rem; }
+      .tl-item,
+      .tl-item:nth-child(odd),
+      .tl-item:nth-child(even) {
+        flex-direction:row; text-align:left;
+        padding-left:3.2rem;
+      }
+      .tl-dot { left:1rem; }
+      .tl-spacer { display:none; }
+
+      /* countdown */
+      .cd-colon { display:none; }
+    }
+
+    @media (max-width:480px) {
+      .hero-names { font-size:3.8rem; }
+      .details-grid { grid-template-columns:1fr; }
+      .gallery-grid { grid-template-columns:1fr; }
+      .g-item img { height:220px; }
+    }
+  </style>
 </head>
 <body>
 
-Hello There! :)
+  <!-- ──────────────────────────────────────────────
+       NAVIGATION
+  ─────────────────────────────────────────────── -->
+  <nav id="navbar" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand" aria-label="Back to top">J &amp; J</a>
 
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#itinerary">Schedule</a></li>
+        <li><a href="#registry">Registry</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ──────────────────────────────────────────────
+       1 · HERO
+  ─────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-wrap">
+      <p class="hero-pre">We Are Getting Married</p>
+
+      <h1 class="hero-names" aria-label="Jhulandy and Jommar">
+        Jhulandy
+        <span class="hero-amp" aria-hidden="true">&amp;</span>
+        Jommar
+      </h1>
+
+      <p class="hero-date">August 28<sup>th</sup>, 2026</p>
+      <p class="hero-loc">&#10022;&ensp;The Archdiocesan Shrine of the Most Sacred Heart of Jesus&ensp;&#10022;<br>&#10022;&ensp;Jakosalem St, Cebu City&ensp;&#10022;</p>
+
+      <a href="#rsvp" class="btn btn-ghost-white">Kindly RSVP</a>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">Scroll</div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────
+       2 · OUR STORY
+  ─────────────────────────────────────────────── -->
+  <section id="story">
+    <div class="container-sm" style="text-align:center;">
+      <span class="eyebrow reveal">How It All Began</span>
+      <h2 class="section-heading reveal">Our Story</h2>
+      <div class="ornament reveal"><div class="ornament-diamond"></div></div>
+
+      <p class="story-body reveal">
+        We first met during the chess tryouts for our college intramurals. What started as two strangers across a board quickly turned into something that felt like destiny. From the moment we played our first match, Jommar felt a spark — it was, for him, love at first sight.
+      </p>
+      <p class="story-body reveal">
+        What followed was a beautiful, winding journey: long conversations that stretched into the night, laughter that filled quiet corners of campus, friendly challenges over the chessboard, and the occasional tear when life tested us. Those years shaped us, helped us grow, and carried us all the way through college graduation together.
+      </p>
+      <p class="story-body reveal">
+        After graduation we began exploring the world, taking every chance to travel and make new memories. Each trip brought us closer, filled with shared discoveries, adventurous detours, and the comfort of knowing we could count on each other wherever we went.
+      </p>
+      <p class="story-body reveal">
+        Then, as a new year began, Jommar knew it was time. During a planned tour from Cagayan de Oro to Bukidnon, he asked Jhulandy to marry him with her parents and siblings there to share the moment. With a simple ring, a shaking voice, and a single, heartfelt “yes,” we turned that trip into the start of our next chapter together.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="story-portraits reveal">
+        <div class="portrait">
+          <img
+            src="https://images.unsplash.com/photo-1678115995736-699ac9dc6b3f?w=600&q=80"
+            alt="Jhulandy and Jommar laughing together at a café"
+            loading="lazy"
+          />
+        </div>
+        <div class="portrait">
+          <img
+            src="https://images.unsplash.com/photo-1542533382-b42a59d8bd39?w=600&q=80"
+            alt="Engagement portrait in golden-hour light"
+            loading="lazy"
+          />
+        </div>
+        <div class="portrait">
+          <img
+            src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=80"
+            alt="Jhulandy and Jommar laughing together at a café"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────
+       3 · EVENT DETAILS
+  ─────────────────────────────────────────────── -->
+  <section id="details">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow reveal">Plan Your Visit</span>
+      <h2 class="section-heading on-dark reveal">Event Details</h2>
+      <div class="ornament reveal" style="--gold:var(--gold-light);">
+        <div class="ornament-diamond" style="background:var(--gold-light);"></div>
+      </div>
+
+      <div class="details-grid">
+        <div class="d-card reveal">
+          <span class="d-icon" aria-hidden="true">&#9962;</span>
+          <h3>Ceremony</h3>
+          <span class="d-big">3:00 PM</span>
+          <p>The Archdiocesan Shrine of the Most Sacred Heart of Jesus<br>Jakosalem St, Cebu City</p>
+        </div>
+        <div class="d-card reveal">
+          <span class="d-icon" aria-hidden="true">&#127864;</span>
+          <h3>Reception</h3>
+          <span class="d-big">6:00 PM</span>
+          <p>Mandarin Plaza Hotel<br>Archbishop Reyes Avenue, corner N Escario St, Cebu City</p>
+        </div>
+        <div class="d-card reveal">
+          <span class="d-icon" aria-hidden="true">&#128084;</span>
+          <h3>Dress Code</h3>
+          <span class="d-big">Semi-Formal</span>
+          <p>Shades of blue & gray</p>
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;">
+            <div style="width:32px;height:32px;border-radius:4px;background:#99B6E0"></div>
+            <div style="width:32px;height:32px;border-radius:4px;background:#5996D5"></div>
+            <div style="width:32px;height:32px;border-radius:4px;background:#2B569A"></div>
+            <div style="width:32px;height:32px;border-radius:4px;background:#A6A6A6"></div>
+            <div style="width:32px;height:32px;border-radius:4px;background:#737373"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────
+       4 · COUNTDOWN
+  ─────────────────────────────────────────────── -->
+  <section id="countdown">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow reveal">Counting Down</span>
+      <h2 class="section-heading reveal">Until We Say I Do</h2>
+      <div class="ornament reveal"><div class="ornament-diamond"></div></div>
+
+      <div class="cd-wrap reveal" aria-live="polite" aria-label="Wedding countdown timer">
+        <div class="cd-block">
+          <span class="cd-num" id="cd-days">--</span>
+          <span class="cd-label">Days</span>
+        </div>
+        <span class="cd-colon" aria-hidden="true">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-hours">--</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <span class="cd-colon" aria-hidden="true">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-minutes">--</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <span class="cd-colon" aria-hidden="true">:</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-seconds">--</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────
+       5 · GALLERY
+  ─────────────────────────────────────────────── -->
+  <section id="gallery">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow reveal">Captured Moments</span>
+      <h2 class="section-heading reveal">Our Gallery</h2>
+      <div class="ornament reveal"><div class="ornament-diamond"></div></div>
+
+      <p class="reg-text reveal" style="max-width:600px;margin:0 auto;">
+        Our wedding gallery is still in the making.<br>
+        Please check back soon to see moments from our special day.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────
+       6 · RSVP
+  ─────────────────────────────────────────────── -->
+  <section id="rsvp">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow reveal">Join Us</span>
+      <h2 class="section-heading on-dark reveal">RSVP</h2>
+      <div class="ornament reveal" style="--g:var(--gold-light);">
+        <div class="ornament-diamond" style="background:var(--gold-light);"></div>
+      </div>
+      <p class="rsvp-note reveal">
+        Kindly respond by <strong style="color:var(--gold-light);font-weight:500;">June 30<sup>th</sup>, 2026</strong>
+        so we can make the day perfect for everyone.
+      </p>
+
+      <a href="https://fb.me/2fmV8nPh4WxUGws" class="btn btn-gold" target="_blank" rel="noopener noreferrer" style="margin-top:1rem;">RSVP via Facebook</a>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────
+       7 · ITINERARY
+  ─────────────────────────────────────────────── -->
+  <section id="itinerary">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow reveal">The Day Ahead</span>
+      <h2 class="section-heading reveal">Wedding Day Schedule</h2>
+      <div class="ornament reveal"><div class="ornament-diamond"></div></div>
+
+      <div class="timeline reveal" role="list">
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-card">
+            <p class="tl-time">2:45 PM</p>
+            <p class="tl-title">Guest Arrival</p>
+            <p class="tl-desc">Welcome and seating in the church</p>
+          </div>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-spacer"></div>
+        </div>
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-spacer"></div>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-card">
+            <p class="tl-time">3:00 PM</p>
+            <p class="tl-title">Wedding Ceremony</p>
+            <p class="tl-desc">Exchange of vows at the Archdiocesan Shrine of the Most Sacred Heart of Jesus</p>
+          </div>
+        </div>
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-card">
+            <p class="tl-time">4:30 PM</p>
+            <p class="tl-title">Portraits &amp; Family Photos</p>
+            <p class="tl-desc">Bridal party and family portraits</p>
+          </div>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-spacer"></div>
+        </div>
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-spacer"></div>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-card">
+            <p class="tl-time">6:00 PM</p>
+            <p class="tl-title">Reception</p>
+            <p class="tl-desc">Dinner, toasts & dancing under the stars</p>
+          </div>
+        </div>
+
+        <div class="tl-item" role="listitem">
+          <div class="tl-card">
+            <p class="tl-time">10:00 PM</p>
+            <p class="tl-title">Grand Farewell</p>
+            <p class="tl-desc">Sparkler send-off and the magical end of an unforgettable evening</p>
+          </div>
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-spacer"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────
+       8 · GIFT REGISTRY
+  ─────────────────────────────────────────────── -->
+  <section id="registry">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow reveal">Your Presence is Our Gift</span>
+      <h2 class="section-heading reveal">Gift Registry</h2>
+      <div class="ornament reveal"><div class="ornament-diamond"></div></div>
+
+      <p class="reg-text reveal" style="max-width:340px;margin:0 auto 1rem;">
+        Your love and support mean the world to us.
+      </p>
+      <p class="reg-text reveal" style="max-width:680px;margin:0 auto 2.8rem;">
+        If you'd like to contribute to our dreams, a monetary gift would be cherished.
+      </p>
+
+      <div class="reg-cards reveal">
+        <div href="#registry" class="reg-card" aria-label="BPI Bank">
+          <div class="reg-card-logo"><img src="images/bpi-qr.png"/></div>
+        </div>
+      </div>
+
+      <a href="#rsvp" class="btn btn-navy reveal">RSVP First &rarr;</a>
+    </div>
+  </section>
+
+
+  <!-- ──────────────────────────────────────────────
+       9 · FOOTER
+  ─────────────────────────────────────────────── -->
+  <footer>
+    <span class="footer-brand">Jhulandy &amp; Jommar</span>
+    <p class="footer-sub">August 28, 2026 &nbsp;·&nbsp; Cebu City</p>
+
+    <p class="footer-contact d-none">
+      Questions? Email us at
+      <a href="mailto:hello@sarahandjames.com">jlodonia@gmail.com</a>
+    </p>
+
+    <nav class="footer-socials d-none" aria-label="Social media links">
+      <!-- Replace # with your actual social URLs -->
+      <a href="#" class="soc" aria-label="Instagram">&#128247;</a>
+      <a href="#" class="soc" aria-label="Facebook" style="font-family:serif;font-weight:700;">f</a>
+      <a href="#" class="soc" aria-label="Pinterest" style="font-family:serif;font-weight:700;">P</a>
+    </nav>
+
+    <p class="footer-hashtag">#LODONIAsgreatestDAY #iMARriedJhul</p>
+
+    <div class="footer-rule" aria-hidden="true"></div>
+    <p class="footer-copy">&copy; 2026 Jhulandy &amp; Jommar</p>
+  </footer>
+
+
+  <!-- ──────────────────────────────────────────────
+       JAVASCRIPT
+  ─────────────────────────────────────────────── -->
+  <script>
+    'use strict';
+
+    /* ── EDIT THESE TO CUSTOMISE ─────────────────────
+       Wedding date & time in ISO format (local time)   */
+    const WEDDING_DATE = new Date('2026-08-28T15:00:00');
+
+    /* ── COUNTDOWN ───────────────────────────────── */
+    const cdDays    = document.getElementById('cd-days');
+    const cdHours   = document.getElementById('cd-hours');
+    const cdMinutes = document.getElementById('cd-minutes');
+    const cdSeconds = document.getElementById('cd-seconds');
+
+    function pad(n) { return String(n).padStart(2,'0'); }
+
+    function tick() {
+      const diff = WEDDING_DATE - Date.now();
+      if (diff <= 0) {
+        cdDays.textContent = cdHours.textContent =
+        cdMinutes.textContent = cdSeconds.textContent = '00';
+        return;
+      }
+      cdDays.textContent    = pad(Math.floor(diff / 86400000));
+      cdHours.textContent   = pad(Math.floor(diff % 86400000 / 3600000));
+      cdMinutes.textContent = pad(Math.floor(diff % 3600000  / 60000));
+      cdSeconds.textContent = pad(Math.floor(diff % 60000    / 1000));
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    /* ── NAVBAR ──────────────────────────────────── */
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', scrollY > 55);
+    }, { passive: true });
+
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ── SCROLL REVEAL ───────────────────────────── */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        /* stagger siblings in the same parent */
+        const siblings = Array.from(
+          entry.target.parentElement.querySelectorAll('.reveal:not(.in-view)')
+        );
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('in-view'), idx * 90);
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  </script>
 </body>
 </html>
