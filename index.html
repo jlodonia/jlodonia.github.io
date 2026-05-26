@@ -66,7 +66,7 @@
       background: rgba(27,42,74,.96);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      padding:.7rem 2.5rem;
+      padding:.4rem 2.5rem;
       box-shadow:0 2px 24px rgba(0,0,0,.22);
     }
 
@@ -246,7 +246,7 @@
       display:block;
       font-size:clamp(2rem,6vw,4rem);
       color:var(--gold-light);
-      margin:-.3em 0;
+      margin:0 0 -.3em;
     }
 
     .hero-date {
@@ -591,6 +591,10 @@
       margin-bottom:2.8rem;
     }
 
+    .reg-actions {
+      margin-bottom:2.8rem;
+    }
+
     .reg-cards {
       display:flex; justify-content:center;
       flex-wrap:wrap; gap:1.5rem;
@@ -749,7 +753,7 @@
         display:none;
         position:fixed; top:0; right:0;
         width:72vw; max-width:280px; height:100vh;
-        background:var(--navy-deep);
+        background:var(--navy);
         flex-direction:column;
         padding:5.5rem 2.5rem 2rem;
         gap:2rem; z-index:800;
@@ -795,6 +799,9 @@
       .gallery-grid { grid-template-columns:1fr; }
       .g-item img { height:220px; }
       .rsvp-note { font-size:.99rem; }
+      .hero-design-icon {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -837,7 +844,7 @@
       </h1>
 
       <p class="hero-date">August 28, 2026</p>
-      <p class="hero-loc">&#10022;&ensp;The Archdiocesan Shrine of the Most Sacred Heart of Jesus&ensp;&#10022;<br>&#10022;&ensp;Jakosalem St, Cebu City&ensp;&#10022;</p>
+      <p class="hero-loc"><span class="hero-design-icon">&#10022;&ensp;</span>The Archdiocesan Shrine of the Most Sacred Heart of Jesus<span class="hero-design-icon">&ensp;&#10022;</span><br><span class="hero-design-icon">&#10022;&ensp;</span>Jakosalem St, Cebu City<span class="hero-design-icon">&ensp;&#10022;</span></p>
 
       <a href="#rsvp" class="btn btn-ghost-white">Kindly RSVP</a>
     </div>
@@ -1098,6 +1105,12 @@
         If you'd like to contribute to our dreams, a monetary gift toward our future home would be deeply appreciated.
       </p>
 
+      <div class="reg-actions">
+        <a href="#rsvp" class="btn btn-navy reveal">RSVP First &rarr;</a>
+
+        <button id="showBankDetails" class="btn btn-gold reveal" style="margin-top: .5rem">Show Bank Details</button>
+      </div>
+
       <div class="reg-cards reveal">
         <div class="reg-card" aria-label="BPI Bank">
           <div class="reg-card-logo"><img src="images/bpi-qr.png"/></div>
@@ -1106,10 +1119,6 @@
           <div class="reg-card-logo"><img src="images/metrobank-qr.jpg"/></div>
         </div>
       </div>
-
-      <a href="#rsvp" class="btn btn-navy reveal">RSVP First &rarr;</a>
-
-      <button id="showBankDetails" class="btn btn-gold reveal" style="margin-top: .5rem">Show Bank Details</button>
     </div>
   </section>
 
@@ -1214,8 +1223,10 @@
     const showBankDetails  = document.getElementById('showBankDetails');
 
     showBankDetails.onclick = function() {
-      document.querySelector('.reg-cards').style.display = 'flex';
-      showBankDetails.style.display = 'none';
+      const cards = document.querySelector('.reg-cards');
+      const hidden = cards.style.display === 'none' || !cards.style.display;
+      cards.style.display = hidden ? 'flex' : 'none';
+      showBankDetails.textContent = hidden ? 'Hide Bank Details' : 'Show Bank Details';
     };
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
