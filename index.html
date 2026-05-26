@@ -121,6 +121,14 @@
     .nav-toggle.open span:nth-child(2){ opacity:0; transform:translateX(6px); }
     .nav-toggle.open span:nth-child(3){ transform:rotate(-45deg) translate(4.5px,-4.5px); }
 
+    .nav-close-li { list-style:none; text-align:right; display:none; }
+    .nav-close {
+      background:none; border:none; color:var(--white);
+      font-size:2rem; cursor:pointer; padding:0 .2rem;
+      line-height:1; opacity:.7; transition:opacity .3s;
+    }
+    .nav-close:hover { opacity:1; }
+
     /* ================================================================
        SHARED SECTION STYLES
     ================================================================ */
@@ -767,6 +775,7 @@
       }
       .nav-links.open { display:flex; }
       .nav-toggle { display:flex; }
+      .nav-close-li { display:block; }
 
       /* story */
       .story-portraits { grid-template-columns:1fr; }
@@ -821,6 +830,7 @@
       <a href="#hero" class="nav-brand" aria-label="Back to top"><img class="nav-brand-image" src="images/logo.png" alt="J &amp; J"/></a>
 
       <ul class="nav-links" id="navLinks" role="list">
+        <li class="nav-close-li"><button class="nav-close" id="navClose" aria-label="Close menu">&times;</button></li>
         <li><a href="#story">Our Story</a></li>
         <li><a href="#details">Details</a></li>
         <li><a href="#gallery">Gallery</a></li>
@@ -1133,7 +1143,7 @@
        9 · FOOTER
   ─────────────────────────────────────────────── -->
   <footer>
-    <span class="footer-brand">Jhulandy &amp; Jommar</span>
+    <div class="footer-brand"><img src="images/logo.png" alt="Jhulandy &amp; Jommar" style="height: 100px;width:auto;display:inline-block;"/></div>
     <p class="footer-sub">August 28, 2026 &nbsp;·&nbsp; Cebu City</p>
 
     <p class="footer-contact d-none">
@@ -1202,6 +1212,12 @@
       const open = links.classList.toggle('open');
       toggle.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    document.getElementById('navClose').addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
     });
 
     document.addEventListener('click', (e) => {
